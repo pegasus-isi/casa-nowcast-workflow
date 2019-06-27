@@ -1,7 +1,10 @@
 cont nowcast_image {
    type "docker"
-   image_site "docker_hub"
-   image "docker:///pegasus/casa-nowcast"
+   #image_site "docker_hub"
+   #image "docker:///pegasus/casa-nowcast"
+   image_site "condorpool"
+   #image "file://data/nowcast_image.tar"
+   image "file://${PWD}/bin/nowcast_image.tar"
 }
 
 tr NowcastToWDSS2 {
@@ -11,6 +14,7 @@ tr NowcastToWDSS2 {
       arch "x86_64"
       os "LINUX"
       type "INSTALLED"
+      #profile pegasus "label" "casa_job"
    }
 }
 		
@@ -21,6 +25,10 @@ tr mrtV2 {
       arch "x86_64"
       os "LINUX"
       type "INSTALLED"
+      #profile env "SEQEXEC_CPUS" "4"
+      #profile pegasus "clusters.size" "8"
+      profile pegasus "clusters.num" "8"
+      #profile pegasus "label" "casa_job"
    }
 }
 
@@ -31,5 +39,9 @@ tr merged_netcdf2png {
       arch "x86_64"
       os "LINUX"
       type "INSTALLED"
+      #profile env "SEQEXEC_CPUS" "4"
+      #profile pegasus "clusters.size" "8"
+      profile pegasus "clusters.num" "1"
+      #profile pegasus "label" "casa_job"
    }
 }

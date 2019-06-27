@@ -26,9 +26,6 @@ class CASAWorkflow(object):
         file_ymd = file_time[0:8]
         file_hms = file_time[8:14]
 
-        #dax = ADAG("casa_nowcast-wf-%s" % file_time)
-        #dax.metadata("name", "CASA Nowcast")
-
         #convert to individual minute files
         nowcast_split_job = Job("NowcastToWDSS2")
         nowcast_split_job.addArguments(self.forecast_fn[-1]);
