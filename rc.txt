@@ -1,0 +1,2 @@
+nexrad_ref.png		file://${PWD}/input/nexrad_ref.png	   site="local"
+mrtV2_config.txt	file://${PWD}/input/mrtV2_config.txt	site="local"

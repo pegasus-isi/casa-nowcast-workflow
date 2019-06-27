@@ -1,0 +1,79 @@
+//*********************wt_config.txt****************************//
+//**$Id:wt_config.txt, v 0.9 2014-11-10 13:02:00 elyons Exp $***//
+//******Copyright 2014 University of Massachusetts Amherst******//
+//********************All rights reserved***********************//
+//**************************************************************//
+//**************************************************************//
+//*wt_config.txt is ingested by the 'wt' program. Do not rename*//
+//*The WTHOME environment variable defines rt_config's location*//
+//*****Make sure all lines are terminated with a semi-colon*****//
+//**************************************************************//
+
+//bool mcc_output determines whether rt connects via socket to the MCC feature repository
+mcc_output = false;
+
+//string mcc_host is the IP address of the server hosting the MCC feature repository
+mcc_host = "216.38.93.53";
+//mcc_host = "127.0.0.1";
+
+//int mcc_port is the port used by the MCC feature repository server
+//default is 20001
+mcc_port = 20001;
+
+//bool gns_output determines whether rt connects via socket to the GNS interface
+gns_output = false;
+
+gns_params =
+{
+
+//string gns_host is the IP address of the server hosting the GNS interface
+//gns_host = ["128.119.44.21"];
+gns_host = ["128.119.44.21"];
+
+//int gns_port is the port used by the GNS interface
+//default is 30986  Should have one port for each IP address, even if duplicates
+gns_port = [ 30986 ] ;
+};
+
+//bool file_output determines whether we create a file containing rt output
+file_output = false;
+
+//string file_name is the name of the wt output text file.  Detections are appended.
+file_name = "./wt.txt";
+
+//bool netcdf_output determines whether we generate a netcdf file containing the detections.
+netcdf_output = false;
+
+//string netcdf_directory is the output directory for netcdf files if netcdf_output is true
+netcdf_directory = ".";
+
+//bool json_output determines whether we generate an json file containing the detections.
+json_output = true;
+
+//string json_directory is the output directory for json files if json_output is true
+json_directory = "./";
+
+//bool kml_output determines whether we generate an kml file containing the detections.
+kml_output = false;
+
+//string kml_directory is the output directory for kml files if kml_output is true
+kml_directory = "/data/mrt/kml";
+
+//bool xml_output determines whether we generate an xml file containing the detections.
+xml_output = false;
+
+//string xml_directory is the output directory for xml files if xml_output is true
+xml_directory = "/data/mrt/xml";
+
+//algorithm parameters
+alg_params =
+{
+
+//array contour_levels are the thresholds that we'll contour on.
+//list these as floats eg. [30.0, 40.0]
+contour_levels = [45.0];
+
+min_contour_points = 12;
+
+};
+
