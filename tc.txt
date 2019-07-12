@@ -1,3 +1,4 @@
+#### Docker ####
 cont nowcast_image {
    type "docker"
    #image_site "docker_hub"
@@ -6,6 +7,13 @@ cont nowcast_image {
    #image "file://data/nowcast_image.tar"
    image "file://${PWD}/bin/nowcast_image.tar"
 }
+
+#### Singularity ####
+#cont nowcast_image {
+#   type "singularity"
+#   image_site "docker_hub"
+#   image "docker:///pegasus/casa-nowcast"
+#}
 
 tr NowcastToWDSS2 {
    site condorpool {
