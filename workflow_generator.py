@@ -68,10 +68,14 @@ class CASAWorkflow(object):
     def build_transformation_catalog(self):
         tc = TransformationCatalog()
 
+        # Singularity (not Docker): it pulls docker:// images straight from
+        # the registry without a Docker daemon, so the workflow also runs on
+        # hosts with only singularity/apptainer installed (e.g. Kubernetes
+        # pods, HPC nodes).
         nowcast_container = Container(
             "nowcast_image",
-            Container.DOCKER,
-            image="docker:///pegasus/casa-nowcast",
+            Container.SINGULARITY,
+            image="docker://pegasus/casa-nowcast",
             image_site="docker_hub",
         )
         tc.add_containers(nowcast_container)

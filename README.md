@@ -41,6 +41,9 @@ directly on the generated `workflow.yml`.
 
 ## Legacy files
 
-`workflow.py`, `daxgen.py`, `run_wf.sh`, `sites.xml`, `tc.txt`, and `rc.txt`
-are the pre-5.0-style generator and external catalogs, superseded by
-`workflow_generator.py`; they are kept for reference.
+`legacy/` holds the pre-5.0-style generator and external catalogs
+(`workflow.py`, `daxgen.py`, `run_wf.sh`, `sites.xml`, `tc.txt`, `rc.txt`),
+superseded by `workflow_generator.py`. They must stay out of the project
+root: pegasus-plan picks up `tc.txt`/`rc.txt`/`sites.xml` from the working
+directory by default, and those definitions silently shadow the catalogs
+embedded in `workflow.yml` (e.g. reverting the container to Docker).
