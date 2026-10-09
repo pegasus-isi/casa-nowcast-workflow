@@ -387,10 +387,13 @@ def main():
     workflow.write()
 
     print(f"Workflow written to {workflow.dagfile}")
+    # --output-dir: no site catalog defines "local", so Pegasus's built-in
+    # local site would otherwise stage outputs to ./wf-output.
     print(
         f"Plan and submit: pegasus-plan --conf {workflow.propsfile} "
         f"--dir {os.path.join(outdir, 'submit')} "
-        f"-s {args.execution_site_name} -o local --submit {workflow.dagfile}"
+        f"-s {args.execution_site_name} -o local "
+        f"--output-dir {workflow.local_storage_dir} --submit {workflow.dagfile}"
     )
 
 

@@ -9,6 +9,9 @@ DIR=$(cd $(dirname $0) && pwd)
 # HTCondor pool with no site catalog (generate with -e condorpool too).
 WORKFLOW=${1:-$DIR/workflow.yml}
 SITE=${SITE:-compute}
+# The generator writes no "local" site, so Pegasus's built-in one would stage
+# outputs to ./wf-output; send them to output/ next to the workflow instead.
+OUTPUT_DIR=${OUTPUT_DIR:-$(cd "$(dirname "$WORKFLOW")" && pwd)/output}
 
 if [ ! -f "$WORKFLOW" ]; then
     echo "Usage: [SITE=condorpool] $0 [WORKFLOW.yml]"
@@ -22,5 +25,6 @@ pegasus-plan \
     --dir $DIR/submit \
     -s $SITE \
     -o local \
+    --output-dir "$OUTPUT_DIR" \
     --submit \
     $WORKFLOW

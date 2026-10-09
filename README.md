@@ -27,8 +27,9 @@ apptainer build Apptainer/CASA_Nowcast_Container.sif Apptainer/CASA_Nowcast_Cont
 SITE=condorpool ./plan.sh
 ```
 
-Final outputs land in `wf-output/` (Pegasus's default output location when
-no catalog defines a `local` site). Or open `CASA-Nowcast-Workflow.ipynb` and run its cells: it uses
+Final outputs land in `output/` next to `workflow.yml` (the plan command
+passes `--output-dir`; without it Pegasus's default `local` site would use
+`wf-output/`). Or open `CASA-Nowcast-Workflow.ipynb` and run its cells: it uses
 the same generator class, submits from an explicit cell, and stages outputs to
 `output/`.
 
