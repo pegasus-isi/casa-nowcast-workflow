@@ -2,5 +2,12 @@ workflow.yml
 submit/
 scratch/
 output/
+wf-output/
+wf-scratch/
 dax_outputs/
 __pycache__/
+pegasus.properties
+Apptainer/*.sif
+workflow.png
+.ipynb_checkpoints/
+.venv/

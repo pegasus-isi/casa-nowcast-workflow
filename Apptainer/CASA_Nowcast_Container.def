@@ -1,0 +1,15 @@
+# Apptainer image for the CASA Nowcast workflow.
+#
+# The tools ship prebuilt in the published Docker image; this definition
+# converts it to a local .sif that Pegasus stages to the workers
+# (image_site="local"), so jobs need no registry access. `Bootstrap: docker`
+# pulls the image directly — no Docker installation is required.
+#
+# Build (Linux, x86_64; Apptainer cannot build on macOS):
+#   apptainer build Apptainer/CASA_Nowcast_Container.sif Apptainer/CASA_Nowcast_Container.def
+
+Bootstrap: docker
+From: pegasus/casa-nowcast
+
+%labels
+    description CASA Nowcast workflow tools (from docker://pegasus/casa-nowcast)
